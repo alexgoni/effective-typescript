@@ -2,10 +2,52 @@
 
 ### 덕 타이핑
 
-객체가 어떤 타입에 부합하는 변수와 메서드를 가질 경우 객체를 해당 타입에 속하는 것으로 간주하는 방식
+객체가 어떤 타입에 부합하는 프로퍼티와 메서드를 가질 경우 객체를 해당 타입에 속하는 것으로 간주하는 방식
 
 덕 타이핑은 동적 타입 언어에서 주로 사용되는 개념으로 JS는 본질적으로 덕 타이핑 기반이다.
 이 개념은 객체의 유형이나 클래스가 아닌, **객체의 속성과 메서드의 존재**에 따라 객체의 타입을 결정한다는 아이디어를 기반으로 한다.
+
+```java
+// 명목적 타이핑 (Java의 예시)
+
+class Point {
+    int x;
+    int y;
+}
+
+class Coordinate {
+    int x;
+    int y;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Point point = new Point();
+        Coordinate coord = new Coordinate();
+
+        // point = coord; // 컴파일 에러: 타입이 일치하지 않음
+    }
+}
+```
+
+```ts
+// 구조적 타이핑
+
+interface Point {
+  x: number;
+  y: number;
+}
+
+function logPoint(point: Point) {
+  console.log(`x: ${point.x}, y: ${point.y}`);
+}
+
+let point = { x: 10, y: 20 };
+logPoint(point); // 정상 작동
+
+let point3D = { x: 10, y: 20, z: 30 };
+logPoint(point3D); // 정상 작동
+```
 
 ### 타입 확장
 
